@@ -48,4 +48,11 @@
 ```bash
     git log
 ```
+10. Create new repo in GitHub
+11. Setup local/remote repo and push
+```bash
+    git remote add origin <your GitHub repo link>
+    git branch -M main
+    git push -u origin main
+```
 
