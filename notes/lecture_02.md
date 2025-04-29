@@ -42,4 +42,17 @@ origin/main -> remote repository
 ```bash
     # Forcedly delete local branch
     git branch -D demo_branch_02
+
+    # Delete remote branch
+    git push -d origin <branch-name>
+    git push -d origin demo_branch_01
 ```
+
+```bash
+    # merge branches
+    git checkout branch_name_there_to_merge
+    git merge branch_name_from
+```
+
+![](/pictures/git_branching.png)
+
