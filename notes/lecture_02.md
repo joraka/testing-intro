@@ -34,6 +34,7 @@ origin/main -> remote repository
     # switch branch
     git checkout branch_name
 
-    
+    # switch (checkout) to any commit
+    git checkout commit_id
 ```
 
