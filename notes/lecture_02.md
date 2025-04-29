@@ -38,3 +38,8 @@ origin/main -> remote repository
     git checkout commit_id
 ```
 
+
+```bash
+    # Forcedly delete local branch
+    git branch -D demo_branch_02
+```
