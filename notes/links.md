@@ -16,3 +16,11 @@
 [Fake e-shope sucedemo](https://www.saucedemo.com/)  
 [Find bugs 'fake e-shope'](https://academybugs.com/find-bugs/)  
 
+## TC:
+[TC testsigma requirements](https://testsigma.com/guides/test-cases-for-manual-testing/)  
+[TC cursera  requirements](https://www.coursera.org/articles/how-to-write-test-cases)  
+
+[TC guru99 template](https://www.guru99.com/download-sample-test-case-template-with-explanation-of-important-fields.html)  
+[TC smartsheet template](https://www.smartsheet.com/test-case-templates-examples)  
+[TC templatelab template](https://templatelab.com/test-case/#google_vignette)  
+

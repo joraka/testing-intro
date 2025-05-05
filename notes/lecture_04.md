@@ -1,69 +1,139 @@
-## 1. Repeat
-## 2. Requirements for QA specialist
+## 1. Repeat and check homework
+## 2. VIM
 
-#### Junior requirements:  
-
-**Experience**
-1+ years of hands-on experience in software testing.
-
-**Hard skills**
-* Experience in software testing.
-* Basic knowledge of and some experience with QA methodologies. 
-* Understanding of software development methodologies and quality processes.
-
-* Solid understanding of QA processes and the software development lifecycle.
-* Basic knowledge of API testing tools such as Postman.
-* Experience with test case creation and execution.
-* Familiarity with tools like Azure DevOps or similar platforms. (specific)
-* Exposure to automation tools (e.g., Playwright) is considered a plus.
-
-**Soft skills**
-* Analytical mind and attention to details.
-* Ability to work as part of a development team and willingness to learn.
-* Basic decision-making, organizational, and time management skills. 
-* Fluent in English (at least B2)
-  
-* Strong communication skills with the ability to clearly explain issues and collaborate with technical and non-technical colleagues.
-* A proactive, eager-to-learn mindset, especially in automation.
-* Analytical and solution-oriented thinking to troubleshoot and resolve issues independently.
-* Attention to detail and a strong focus on user experience and product quality.
-* Collaborative approach and ability to work effectively in cross-functional teams.
+When you apply commit without `-m` **VIM** text editor appear. Proceed following actions:
+1. Type subject of message
+2. Type message body - description
+3. Save data:
+   1. `SHIFT + ;` -> in order activate CLI mode (on MAC `SHIFT + :` )
+   2. type `w` and press `ENTER` key in order to save
+4. Exit from VIM
+   1. `SHIFT + ;`
+   2. type `q` and press `ENTER` key in order to exit
 
 
-#### Min-Senior requirements: 
+Open Vim from Linux terminal:
+> type `vim` and press `Enter`
+>
 
-**Experience**
-5+ years of experience as a QA Engineer and at least 2+ years of experience in developing automation for mobile platforms
+Close VIM:
+>ESC, SHIFT + Z, SHIFT + Z
+>
 
-**Hard skills**
-* Proficiency in Java or Kotlin programming languages, with hands-on experience in UI testing frameworks such as Espresso, UiAutomator, Compose UI Test
-* Proficiency in Swift programming language, with hands-on experience in XCode and UI testing using XCTest framework
-* Understanding of CI/CD processes and tools
-* Good understanding of the software development life-cycle process
-* Knowledge of quality assurance methodologies, tools, and processes
+Close VIM from CLI mode:
+>SHIFT + ;
+> type `q` press `ENTER`
+> type `q!` press `ENTER` (exit without saving)
+
+EDIT
+>`ESC` move to command mode
+>`i` - insert, switched from command mode
+>`s` - replaces a single character
+>`x` - delete character
+>`3x` - delete multiple characters
+>`d` - press twice to delete a line
+>`u` - undo changes
+>
+>Press `Shift + S` to replace multiple characters
+>Press `Shift + A` to start writing at the end of a line
+>
+>`e` - in cmd mode move by words forward
+>`b` - in cmd mode move by words backward
+>`/` - in cmd mode search text
+>
+>`H`, `J`, `K`, `L` keys for navigation
+
+**Force Saving:** To save changes, press `Shift + :` then type `w`
 
 
-Bonus points for:
-* Experience with writing automated tests for Google Play Billing Library integration
-* Experience with writing automated tests for Apple Store billing system
-* Experience with Firebase Test Lab
-  
-**Soft skills**
-* Strong technical skills and being pro at identifying issues and solving complex problems
-* Proactivity and high motivation
+## 3. Figma/mockup
+[Figma](https://www.figma.com)
 
 
-## 3. Learning and AI
-## 4. QA Roadmap
-[QA road map](https://roadmap.sh/qa)
+## 4. Test Scenarios (TS) and Test Cases (TC)
 
-## 5. Testing types
+Test Scenarios (TS) = 1 functionality
 
-1. Static (developers)
-2. Dynamic (qa specialists and developers)
+https://www.saucedemo.com/
+1. Header (Web sites only)
+2. Footer (Web sites only)
+3. Hamburger menu
+4. Login
+5. Registration (Person and company)
+6. Main-starting page
+7. Item page
+8. Rest of page (About, some category and etc.)
+9. Navigation menu
+10. Cart
+11. Purchase
+12. Filters, sorting etc.
+13. Logout
+14. Account removal
 
-UI/UX -> user interface / user experience 
-figma
+Desktop and web app:
+1. Install
+2. Uninstall
+3. Close app
+4. No tests for Header and Footers
+   
 
-![](/pictures/testing_types.png)
+Test Scenarios (TS) contains different Test Cases (TC)
+Positive TC (with valid data)
+Negative TC (with invalid data)
+
+Always starting with positivist TC
+
+Status: Pass/Fail/Blocked
+
+TS.8. Login
+TC.8.1. Login with valid data  
+(first TC always must be positive)  
+* 1. Enter user name: standard_user
+* 2. Enter password: secret_sauce 
+* 3. Click on button 'Login'
+
+Status: Pass/Fail/Blocked
+Expected result: Open shopping main page
+Actual result:
+
+TC.8.2. Login with incorrect user name
+* 1. Enter user name: some_incorrect_user_name
+* 2. Enter password: secret_sauce 
+* 3. Click on button 'Login'
+
+Status: Pass/Fail/Blocked
+Expected result:   
+    Epic sadface: Username and password do not match any user in this service  
+Actual result:
+
+TC.8.3. Login with empty user name
+* 1. Enter user name: just empty field
+* 2. Enter password: secret_sauce 
+* 3. Click on button 'Login'
+
+Status: Pass/Fail/Blocked
+Expected result:   
+    Epic sadface: Username is required   
+Actual result:
+
+TC.8.3. Login with empty password
+* 1. Enter user name: standard_user
+* 2. Enter password: just empty field 
+* 3. Click on button 'Login'
+* 
+Status: Pass/Fail/Blocked
+Expected result:   
+    Epic sadface: Password is required  
+Actual result:
+
+[TC testsigma requirements](https://testsigma.com/guides/test-cases-for-manual-testing/)  
+[TC cursera  requirements](https://www.coursera.org/articles/how-to-write-test-cases)  
+
+[TC guru99 template](https://www.guru99.com/download-sample-test-case-template-with-explanation-of-important-fields.html)  
+[TC smartsheet template](https://www.smartsheet.com/test-case-templates-examples)  
+[TC templatelab template](https://templatelab.com/test-case/#google_vignette)  
+
+
+
+
 

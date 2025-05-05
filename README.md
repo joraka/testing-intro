@@ -19,7 +19,9 @@
 2. VIM
 3. Figma/mockup
 4. Test Scenarios (TS) and Test Cases (TC)
+
+<!-- ### [Lecture 05](/notes/lecture_05.md)
 5. Boxing
-6. Software dev. methodologies: Waterfall, Agile
+6. Software dev. methodologies: Waterfall, Agile -->
 
 
