@@ -14,4 +14,12 @@
 4. QA Roadmap
 5. Testing types
 
-figma/mockup
+### [Lecture 04](/notes/lecture_04.md)
+1. Repeat and check homework
+2. VIM
+3. Figma/mockup
+4. Test Scenarios (TS) and Test Cases (TC)
+5. Boxing
+6. Software dev. methodologies: Waterfall, Agile
+
+
