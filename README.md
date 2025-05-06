@@ -14,14 +14,19 @@
 4. QA Roadmap
 5. Testing types
 
+## Week 02
 ### [Lecture 04](/notes/lecture_04.md)
 1. Repeat and check homework
 2. VIM
 3. Figma/mockup
 4. Test Scenarios (TS) and Test Cases (TC)
 
-<!-- ### [Lecture 05](/notes/lecture_05.md)
-5. Boxing
-6. Software dev. methodologies: Waterfall, Agile -->
+### [Lecture 05](/notes/lecture_05.md)
+1. Repeat and check homework
+<!-- 2. Boxing
+3. Software dev. methodologies: Waterfall, Agile -->
+
+
+<!-- ## Week 03 -->
 
 
