@@ -3,11 +3,12 @@
 
 TC requirements:
 1. ID
-2. description(name)
+2. title (name)
 3. steps
 4. status
 5. expected result
 6. actual result
+7. description/notes/summary
 
 
 https://todolist.james.am/#/
