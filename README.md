@@ -23,8 +23,18 @@
 
 ### [Lecture 05](/notes/lecture_05.md)
 1. Repeat and check homework
-<!-- 2. Boxing
-3. Software dev. methodologies: Waterfall, Agile -->
+2. TC requirements
+
+### [Lecture 06](/notes/lecture_06.md)
+1. Repeat and check homework
+2. Testing levels and boxing
+3. Software dev. methodologies: Waterfall, Agile
+
+
+<!-- ### [Lecture 07](/notes/lecture_07.md)
+4. Regression, Smoke, Exploratory, Ad-hoc testing
+5. Test plan
+6. TC management systems (Testomat) -->
 
 
 <!-- ## Week 03 -->
