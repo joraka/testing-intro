@@ -30,13 +30,12 @@
 2. Testing levels and boxing
 3. Software dev. methodologies: Waterfall, Agile
 
-
-<!-- ### [Lecture 07](/notes/lecture_07.md)
-4. Regression, Smoke, Exploratory, Ad-hoc testing
-5. Test plan
-6. TC management systems (Testomat) -->
-
+### [Lecture 07](/notes/lecture_07.md)
+1. Repeat and check homework
+2. Regression, Smoke, Exploratory, Ad-hoc testing
+3. TC management systems (Testomat)
 
 <!-- ## Week 03 -->
+<!-- 4. Test plan -->
 
 
