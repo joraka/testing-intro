@@ -35,7 +35,18 @@
 2. Regression, Smoke, Exploratory, Ad-hoc testing
 3. TC management systems (Testomat)
 
-<!-- ## Week 03 -->
-<!-- 4. Test plan -->
+## Week 03
+### [Lecture 08](/notes/lecture_08.md)
+1. Repeat and check homework
+
+### [Lecture 07](/notes/lecture_07.md)
+1. Repeat and check homework
+2. Test plan
+3. Checklist
+4. Smoke testing
+
+
+
+<!-- ## Week 04 -->
 
 
