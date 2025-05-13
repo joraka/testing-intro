@@ -2,9 +2,6 @@
 2. Identify TS/TC for smoke test
 3. Defects and severities
 4. Bug lifecycle
-5. Bug registration
-6. Jira
-
 
 ## 2. Identify TS/TC for smoke test
 
@@ -85,8 +82,6 @@ Pvz.: nedideli UI neatitikimai, neteisingas pranešimų formatavimas, ašybos kl
 
 ## 4. Bug lifecycle
 ![](/pictures/bug_lifecycle.png)
-
-## 5. Bug registration
 
 ## 6. Jira
 https://home.atlassian.com/  
