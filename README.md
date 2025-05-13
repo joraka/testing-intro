@@ -38,13 +38,19 @@
 ## Week 03
 ### [Lecture 08](/notes/lecture_08.md)
 1. Repeat and check homework
-
-### [Lecture 07](/notes/lecture_07.md)
-1. Repeat and check homework
 2. Test plan
 3. Checklist
 4. Smoke testing
 
+### [Lecture 09](/notes/lecture_09.md)
+1. Repeat and check homework
+2. Identify TS/TC for smoke test
+3. Defects and severities
+4. Bug lifecycle
+
+<!-- ### [Lecture 10](/notes/lecture_10.md)
+5. Bug registration
+6. Jira -->
 
 
 <!-- ## Week 04 -->
