@@ -1,0 +1,4 @@
+You have an application on https://coffee-cart.app/
+You have found some issues - bugs wherefore require to register them into Jira.
+Do not create new project. You may register bugs in the same project created during lecture.
+ 
