@@ -1,0 +1,3 @@
+Create new project with Jira and register at least 5 defects from https://academybugs.com/find-bugs/
+
+ 
