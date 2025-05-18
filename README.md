@@ -53,13 +53,11 @@
 2. Bug registration
 3. Jira
 
-
-<!-- ### [Lecture 11](/notes/lecture_11.md)
+### [Lecture 11](/notes/lecture_11.md)
 1. Repeat and check homework 
 2. Boundary values
 3. Pesticide paradox
 4. Exercise to register bugs into Jira
-5. -->
 
 <!-- ## Week 04 -->
 
