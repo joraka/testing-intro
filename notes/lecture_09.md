@@ -8,16 +8,16 @@
 Smoke TC for web site:   
 https://www.autobusubilietai.lt/
 
-TC.1. Registracija
-TC.2. Prisijungimas
+TC.1. Registracija  
+TC.2. Prisijungimas  
 TC.3. Keliones paieska (keliones pasirinkimas)
       nors galima iskaidyti i 2 dalis:
       kelione i 1a puse ir keline i abi puses
-TC.4. Pirkimas (duomenu pateikimas)
-TC.5. Apmokejimas (mokejimo pasirinkimas)
-TC.6. Atsijungimas
-TC.7. Issiregistravimas
-TC.8. UI/UX defektai (tai nera privolomai, kaip papildomas punktas)
+TC.4. Pirkimas (duomenu pateikimas)  
+TC.5. Apmokejimas (mokejimo pasirinkimas)  
+TC.6. Atsijungimas  
+TC.7. Issiregistravimas  
+TC.8. UI/UX defektai (tai nera privolomai, kaip papildomas punktas)  
 
 Smoke TC of mobile app: 
 install app `autobusu bilietai`
@@ -26,18 +26,19 @@ simulate and emulate
 
 Smoke TC for mobile app: 
 
-TC.1. APP idiegimas
-TC.2. Registracija
-TC.3. Prisijungimas
-TC.4. Keliones paieska (keliones pasirinkimas)
-      nors galima iskaidyti i 2 dalis:
-      kelione i 1a puse ir keline i abi puses
-TC.5. Pirkimas (duomenu pateikimas)
-TC.6. Apmokejimas (mokejimo pasirinkimas)
-TC.7. Atsijungimas
-TC.8. Issiregistravimas
-TC.9. UI/UX defektai (tai nera privolomai, kaip papildomas punktas)
-TC.10. APP isdiegimas
+TC.1. APP idiegimas  
+TC.2. Registracija  
+TC.3. Prisijungimas  
+TC.4. Keliones paieska (keliones pasirinkimas)  
+* nors galima iskaidyti i 2 dalis:
+* kelione i 1a puse ir keline i abi puses  
+
+TC.5. Pirkimas (duomenu pateikimas)  
+TC.6. Apmokejimas (mokejimo pasirinkimas)  
+TC.7. Atsijungimas  
+TC.8. Issiregistravimas  
+TC.9. UI/UX defektai (tai nera privolomai, kaip papildomas punktas)  
+TC.10. APP isdiegimas  
 
 ## 3. Defects and severities
 ISQTB  
