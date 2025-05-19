@@ -1,3 +1,7 @@
+start - 4/28/2025	
+end - 7/21/20205
+
+
 ## Week 01
 ### [Lecture 01](/notes/lecture_01.md)
 1. Introduction
@@ -59,6 +63,15 @@
 3. Pesticide paradox
 4. Exercise to register bugs into Jira
 
-<!-- ## Week 04 -->
+## Week 04
+### [Lecture 12](/notes/lecture_12.md)
+1. Repeat and check homework
+2. FE vs BE
+3. System integrations
+4. REST API
+5. Postman
+
+
+<!-- ## Week 05 -->
 
 
