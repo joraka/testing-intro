@@ -78,6 +78,10 @@ end - 7/21/20205
 4. API documentation
 5. Request queries
 
+### [Lecture 14](/notes/lecture_14.md)
+1. Repeat and check homework
+2. Postman scripts
+
 <!-- ## Week 05 -->
 
 
