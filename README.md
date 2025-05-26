@@ -18,6 +18,7 @@ end - 7/21/20205
 4. QA Roadmap
 5. Testing types
 
+
 ## Week 02
 ### [Lecture 04](/notes/lecture_04.md)
 1. Repeat and check homework
@@ -38,6 +39,7 @@ end - 7/21/20205
 1. Repeat and check homework
 2. Regression, Smoke, Exploratory, Ad-hoc testing
 3. TC management systems (Testomat)
+
 
 ## Week 03
 ### [Lecture 08](/notes/lecture_08.md)
@@ -63,6 +65,7 @@ end - 7/21/20205
 3. Pesticide paradox
 4. Exercise to register bugs into Jira
 
+
 ## Week 04
 ### [Lecture 12](/notes/lecture_12.md)
 1. Repeat and check homework
@@ -85,6 +88,12 @@ end - 7/21/20205
 ### [Lecture 15](/notes/lecture_15.md)
 1. Repeat and check homework
 2. Postman scripts
+
+
+## Week 06
+### [Lecture 16](/notes/lecture_16.md)
+1. Repeat and check homework
+2. Postman scripts (headres)
 
 
 <!-- ## Week 05 -->
