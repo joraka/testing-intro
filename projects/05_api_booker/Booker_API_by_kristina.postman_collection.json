@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "19b88d65-c6b1-4d64-804d-52ff71c7e7b9",
+		"name": "Booker API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44983175",
+		"_collection_link": "https://kristina-4005333.postman.co/workspace/60a29318-f8ab-4493-86b2-481730f86161/collection/44983175-19b88d65-c6b1-4d64-804d-52ff71c7e7b9?action=share&source=collection_link&creator=44983175"
+	},
+	"item": [
+		{
+			"name": "Auth/token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/auth",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All bookings",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}booking",
+					"host": [
+						"{{baseUrl}}booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking nr1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Jonas\",\n    \"lastname\" : \"Jonaitis\",\n    \"totalprice\" : 123,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-03\",\n        \"checkout\" : \"2019-05-01\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking",
+					"host": [
+						"{{baseUrl}}booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking nr2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Petras\",\n    \"lastname\" : \"Petraitis\",\n    \"totalprice\" : 54,\n    \"depositpaid\" : false,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-05-23\",\n        \"checkout\" : \"2018-06-01\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking",
+					"host": [
+						"{{baseUrl}}booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking nr3",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Ona\",\n    \"lastname\" : \"Onaityte\",\n    \"totalprice\" : 276,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-03\",\n        \"checkout\" : \"2019-05-01\"\n    },\n    \"additionalneeds\" : \"Pet friendly room\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking",
+					"host": [
+						"{{baseUrl}}booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking nr4",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Salomeja\",\n    \"lastname\" : \"Neris\",\n    \"totalprice\" : 75,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-03\",\n        \"checkout\" : \"2019-05-01\"\n    },\n    \"additionalneeds\" : \"Quite room\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking",
+					"host": [
+						"{{baseUrl}}booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}booking?depositpaid=true&firstname=Jane&lastname=Doe",
+					"host": [
+						"{{baseUrl}}booking"
+					],
+					"query": [
+						{
+							"key": "depositpaid",
+							"value": "true"
+						},
+						{
+							"key": "firstname",
+							"value": "Jane"
+						},
+						{
+							"key": "lastname",
+							"value": "Doe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}booking/54",
+					"host": [
+						"{{baseUrl}}booking"
+					],
+					"path": [
+						"54"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update booking",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=e6d1869e800af0f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"John\",\n    \"lastname\": \"Smith\",\n    \"totalprice\": 75,\n    \"depositpaid\": \"paid\",\n    \"bookingdates\": {\n        \"checkin\": \"2018-01-01\",\n        \"checkout\": \"2019-01-01\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking/54",
+					"host": [
+						"{{baseUrl}}booking"
+					],
+					"path": [
+						"54"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=e6d1869e800af0f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}booking/12",
+					"host": [
+						"{{baseUrl}}booking"
+					],
+					"path": [
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://restful-booker.herokuapp.com",
+			"type": "string"
+		}
+	]
+}
