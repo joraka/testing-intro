@@ -95,6 +95,11 @@ end - 7/21/20205
 1. Repeat and check homework
 2. Postman scripts (headres)
 
+### [Lecture 17](/notes/lecture_17.md)
+1. Repeat and check homework
+2. Set/get variable as objects
+3. Test isolation
+4. Newman tool
 
 <!-- ## Week 05 -->
 
