@@ -1,0 +1,10 @@
+You have api project with scripts:
+https://restful-booker.herokuapp.com/apidoc/index.html
+
+1. create new (separate) project
+2. initiate node project (npm init -y)
+3. initiate git continue with commits
+4. push project into GitHub
+5. create pipeline in GitHub (actions)
+
+

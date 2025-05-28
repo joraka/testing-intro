@@ -98,9 +98,19 @@ end - 7/21/20205
 ### [Lecture 17](/notes/lecture_17.md)
 1. Repeat and check homework
 2. Set/get variable as objects
+
+### [Lecture 18](/notes/lecture_18.md)
+1. Repeat and check homework
+2. Dynamic variable
 3. Test isolation
 4. Newman tool
+5. GitHub Actions run Newman
+3. Newman reports
 
-<!-- ## Week 05 -->
+<!-- ### [Lecture 18](/notes/lecture_18.md)
+1. Repeat and check homework
+2. Newman reports
+    -->
+<!-- ## Week 05
 
 
