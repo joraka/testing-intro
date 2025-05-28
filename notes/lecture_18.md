@@ -73,10 +73,11 @@ Run newman:
     newman run postman_file_name.json
 ```
 
-
 ## 5. GitHub Actions run Newman
 
 ### 1st option
+all files attached in folder `./projects/06_newman/02_news_api_newman`  
+
 ```bash
 # create folder
 # copy postman json file
@@ -131,6 +132,7 @@ jobs:
 
 
 ### 2nd option
+all files attached in folder `./projects/06_newman/03_news_api_newman_node`  
 ```bash
 # create folder
 # copy postman json file
