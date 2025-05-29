@@ -156,7 +156,8 @@
 						"exec": [
 							"pm.request.headers.add({\r",
 							"    key:\"x-api-key\",\r",
-							"    value: pm.collectionVariables.get(\"apiKey\")\r",
+							"    value: pm.environment.get(\"apiKey\"),\r",
+							"    // value: pm.collectionVariables.get(\"apiKey\"),\r",
 							"    // value: \"asd6f5494we8r46s5d4f\"\r",
 							"});"
 						],
@@ -313,18 +314,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "baseUrl",
-			"value": "https://newsapi.org/",
-			"type": "string"
-		},
-		{
-			"key": "apiKey",
-			"value": "144e0c5c31324ea199b7e9cb410e96d0",
-			"type": "string"
 		}
 	]
 }

@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "newman run News-API.postman_collection.json"
+    "test": "newman run News-API.postman_collection.json",
+    "tste": "newman run News-API.postman_collection.json -e news_api_env.postman_environment.json",
+    "tstr": "newman run News-API.postman_collection.json -r cli,json",
+    "tst:rextra": "npx newman run News-API.postman_collection.json -r htmlextra"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
 }

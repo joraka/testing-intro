@@ -163,7 +163,9 @@ git pull
 
 ```
 
-**Add code into yml file**  
+**Add code into yml file** 
+
+Option 1:  
 ```yaml
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
@@ -204,5 +206,39 @@ jobs:
 
 ```
 
+Option 2
+```yaml
+name: Run Restful Booker Postman Tests with Newman
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+ 
+jobs:
+  postman-tests:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+         node-version: '18'
+       
+      - name: Initiate node project
+        run:  npm init -y
 
+      - name: install libraries
+        run:  npm install
+ 
+      - name: Install Newman globally
+        run: npm install -g newman
+ 
+      - name: Run Postman tests with Newman
+        run: newman run restful-booker.postman_collection.json
+```
 
