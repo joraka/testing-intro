@@ -1,6 +1,6 @@
 1. Repeat and check homework
 2. Newman reports and environment variables
- 
+3. Clean git cache
 
 ## 1. Repeat and check homework
 
@@ -35,4 +35,7 @@ Run postman tests with environment variables:
     npx newman run postman_file_name.json -e postman_environment_file_name.json 
 ```
 
-
+## 3.Clean git cache
+```bash
+    git rm -r -f --cached "./newman"
+```
