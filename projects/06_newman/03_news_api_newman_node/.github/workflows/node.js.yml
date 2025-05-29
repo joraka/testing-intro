@@ -33,4 +33,4 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman tests by package scripts
-      run: npm run test
+      run: npm run tste
