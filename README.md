@@ -111,11 +111,12 @@ end - 7/21/20205
 1. Repeat and check homework
 2. Newman reports and environment variables
 
-<!-- ### [Lecture 20](/notes/lecture_20.md)
-1. Repeat and check homework
-2. Repeat JavaScript
-3. Node express User Auth project  -->
    
-<!-- ## Week 05
+## Week 07
+### [Lecture 20](/notes/lecture_20.md)
+1. Repeat JavaScript
+2. Node express User Auth project 
 
 
+
+<!-- ## Week 08 -->
