@@ -1,0 +1,6 @@
+Complete code of project express_usr_mng according comments inside file app.js
+Create Post request with test scripts covering all possible positive and negative tests.
+
+Code and tests cover only for post (create new user)
+
+

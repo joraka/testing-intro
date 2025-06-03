@@ -117,6 +117,8 @@ end - 7/21/20205
 1. Repeat JavaScript
 2. Node express User Auth project 
 
-
+### [Lecture 21](/notes/lecture_21.md)
+1. Repeat
+2. Node express User Auth project 
 
 <!-- ## Week 08 -->
