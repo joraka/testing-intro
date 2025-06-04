@@ -121,4 +121,8 @@ end - 7/21/20205
 1. Repeat
 2. Node express User Auth project 
 
+### [Lecture 22](/notes/lecture_22.md)
+1. Repeat and check homework
+2. Node express User Auth project 
+
 <!-- ## Week 08 -->
