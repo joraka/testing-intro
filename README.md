@@ -130,4 +130,14 @@ end - 7/21/20205
 2. Node express User Auth project 
 3. Postgres installation
 
-<!-- ## Week 08 -->
+
+## Week 08
+### [Lecture 24](/notes/lecture_24.md)
+1. Repeat and check homework
+2. GitHub actions
+3. Intro to SQL
+4. SQL scripts
+
+
+
+<!-- ## Week 09 -->
