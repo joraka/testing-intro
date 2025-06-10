@@ -1,0 +1,10 @@
+of project express_usr_mng according comments inside file app.js
+
+- Complete API code and Postman scripts if not completed yet.
+- Export Postman json file
+- Run all postman tests with 'newman' and generate reports
+- Modify package.json file scripts block in order to add required scripts
+- require one script that runs app and test.
+- push project into GitHub
+- create and run pipeline tests by GitHub actions
+

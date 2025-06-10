@@ -1,0 +1,1689 @@
+{
+	"info": {
+		"_postman_id": "f9dee3ac-aa38-4602-b3d1-6341f54966fd",
+		"name": "express_usr_mng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15497739",
+		"_collection_link": "https://bt-js-test20241218.postman.co/workspace/BT-20250129~02081923-30d9-4712-8c6c-b3fd600adcee/collection/15497739-f9dee3ac-aa38-4602-b3d1-6341f54966fd?action=share&source=collection_link&creator=15497739"
+	},
+	"item": [
+		{
+			"name": "GET user",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function saveUserDetails() {\r",
+									"    var requestUser = JSON.parse(pm.request.body.raw);\r",
+									"    var responseUser = pm.response.json()?.user;\r",
+									"\r",
+									"    if (requestUser) {\r",
+									"        pm.collectionVariables.set(\"user_for_get\", JSON.stringify(requestUser));\r",
+									"    }\r",
+									"\r",
+									"    if (responseUser) {\r",
+									"        pm.collectionVariables.set(\"userId_for_get\", responseUser.id);\r",
+									"    }\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    saveUserDetails();\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Returns a non-empty array of valid user objects\", function () {\r",
+									"    const response = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    pm.expect(response.length).to.be.greaterThan(0);\r",
+									"    \r",
+									"    response.forEach(user => {\r",
+									"        pm.expect(parseInt(user.id)).to.be.greaterThan(0);\r",
+									"        pm.expect(user.username).to.be.a('string').that.is.not.empty; \r",
+									"        pm.expect(user.email).to.be.a('string').that.is.not.empty; \r",
+									"        pm.expect(user.password).to.be.a('string').that.is.not.empty; \r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate user matches input dat\", function () {\r",
+									"    const response = pm.response.json();\r",
+									"    const user = JSON.parse(pm.collectionVariables.get(\"user_for_get\"));\r",
+									"    const userId = JSON.parse(pm.collectionVariables.get(\"userId_for_get\"));\r",
+									"\r",
+									"    pm.expect(parseInt(response.id)).to.eql(userId);\r",
+									"    pm.expect(response.username).to.eql(user.username);\r",
+									"    pm.expect(response.email).to.eql(user.email);\r",
+									"    pm.expect(response.password).to.eql(user.password);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/{{userId_for_get}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId_for_get}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create user",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Create user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function saveUserDetails() {\r",
+											"    var requestUser = JSON.parse(pm.request.body.raw);\r",
+											"    var responseUser = pm.response.json()?.user;\r",
+											"\r",
+											"    if (requestUser) {\r",
+											"        pm.collectionVariables.set(\"user_for_post\", JSON.stringify(requestUser));\r",
+											"    }\r",
+											"\r",
+											"    if (responseUser) {\r",
+											"        pm.collectionVariables.set(\"userId_for_post\", responseUser.id);\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"saveUserDetails();\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate created user matches input dat\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const user = JSON.parse(pm.collectionVariables.get(\"user_for_post\"));\r",
+											"    const userCreatedMessage = pm.collectionVariables.get(\"userCreatedMessage\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User created message\").to.eql(userCreatedMessage);\r",
+											"    pm.expect(parseInt(response.user.id),\"User id\").to.greaterThan(0);\r",
+											"    pm.expect(response.user.username, \"User name\").to.eql(user.username);\r",
+											"    pm.expect(response.user.email, \"User email\").to.eql(user.email);\r",
+											"    pm.expect(response.user.password, \"User password\").to.eql(user.password);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user  when username length is min",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function saveUserDetails() {\r",
+											"    var requestUser = pm.request.body.raw;\r",
+											"    var responseUser = pm.response.json()?.user;\r",
+											"\r",
+											"    if (requestUser) {\r",
+											"        pm.collectionVariables.set(\"user_for_post_nameLengthMin\", JSON.stringify(requestUser));\r",
+											"    }\r",
+											"\r",
+											"    if (responseUser) {\r",
+											"        pm.collectionVariables.set(\"userId_for_post_nameLengthMin\", responseUser.id);\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"saveUserDetails();\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate created user matches input dat\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const user = JSON.parse(pm.collectionVariables.get(\"user_for_post_nameLengthMin\"));\r",
+											"    const userCreatedMessage = pm.collectionVariables.get(\"userCreatedMessage\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User created message\").to.eql(userCreatedMessage);\r",
+											"    pm.expect(parseInt(response.user.id),\"User id\").to.greaterThan(0);\r",
+											"    pm.expect(response.user.username, \"User name\").to.eql(user.username);\r",
+											"    pm.expect(response.user.email, \"User email\").to.eql(user.email);\r",
+											"    pm.expect(response.user.password, \"User password\").to.eql(user.password);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    return {\r",
+											"        \"username\": pm.collectionVariables.get(\"usernameMin\"),\r",
+											"        \"email\": pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+											"        \"password\": pm.collectionVariables.get(\"passwordMin\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains success message\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.match(/User id \\d+ deleted/);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/{{userId_for_post_nameLengthMin}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"{{userId_for_post_nameLengthMin}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user  when username length is max",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function saveUserDetails() {\r",
+											"    var requestUser = pm.request.body.raw;\r",
+											"    var responseUser = pm.response.json()?.user;\r",
+											"\r",
+											"    if (requestUser) {\r",
+											"        pm.collectionVariables.set(\"user_for_post_nameLengthMax\", JSON.stringify(requestUser));\r",
+											"    }\r",
+											"\r",
+											"    if (responseUser) {\r",
+											"        pm.collectionVariables.set(\"userId_for_post_nameLengthMax\", responseUser.id);\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"saveUserDetails();\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate created user matches input dat\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const user = JSON.parse(pm.collectionVariables.get(\"user_for_post_nameLengthMax\"));\r",
+											"    const userCreatedMessage = pm.collectionVariables.get(\"userCreatedMessage\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User created message\").to.eql(userCreatedMessage);\r",
+											"    pm.expect(parseInt(response.user.id),\"User id\").to.greaterThan(0);\r",
+											"    pm.expect(response.user.username, \"User name\").to.eql(user.username);\r",
+											"    pm.expect(response.user.email, \"User email\").to.eql(user.email);\r",
+											"    pm.expect(response.user.password, \"User password\").to.eql(user.password);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    return {\r",
+											"        \"username\": pm.collectionVariables.get(\"usernameMax\"),\r",
+											"        \"email\": pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+											"        \"password\": pm.collectionVariables.get(\"passwordMin\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains success message\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.match(/User id \\d+ deleted/);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1/users/{{userId_for_post_nameLengthMax}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"{{userId_for_post_nameLengthMax}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create user without username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message when required fields are missing\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_requiredFields\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user without email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message when required fields are missing\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_requiredFields\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user without password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message when required fields are missing\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_requiredFields\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with duplicated username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {\r",
+											"    pm.response.to.have.status(409);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for duplicated username\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_userNameUnique\");\r",
+											"\r",
+											"    pm.expect(response.message,\"Username error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    const user = JSON.parse( pm.collectionVariables.get(\"user_for_post\"));\r",
+											"    \r",
+											"    return {\r",
+											"        \"username\": user.username,\r",
+											"        \"email\": pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+											"        \"password\": pm.variables.replaceIn(\"{{$passwordMin}}\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user  when username length is below min",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for username length\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_userNameLength\");\r",
+											"\r",
+											"    pm.expect(response.message,\"Username error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    const username = pm.collectionVariables.get(\"usernameBelowMin\");\r",
+											"    return {\r",
+											"        \"username\": username,\r",
+											"        \"email\": pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+											"        \"password\": pm.variables.replaceIn(\"{{$passwordMin}}\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user  when username length is above max",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for username length\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_userNameLength\");\r",
+											"\r",
+											"    pm.expect(response.message,\"Username error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    const username = pm.collectionVariables.get(\"usernameAboveMax\");\r",
+											"    return {\r",
+											"        \"username\": username,\r",
+											"        \"email\": pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+											"        \"password\": pm.variables.replaceIn(\"{{$passwordMin}}\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with duplicated email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {\r",
+											"    pm.response.to.have.status(409);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for duplicated email\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_emailUnique\");\r",
+											"\r",
+											"    pm.expect(response.message,\"Username error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    const user = JSON.parse( pm.collectionVariables.get(\"user_for_post\"));\r",
+											"    \r",
+											"    return {\r",
+											"        \"username\": pm.variables.replaceIn(\"{{$randomUserName}}\"),\r",
+											"        \"email\": user.email,\r",
+											"        \"password\": pm.variables.replaceIn(\"{{$passwordMin}}\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with incorrect email format",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for incorrect email format\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_emailFormat\");\r",
+											"\r",
+											"    pm.expect(response.message,\"Username error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function addRequestBody() {\r",
+											"    return {\r",
+											"        \"username\": pm.variables.replaceIn(\"{{$randomUserName}}\"),\r",
+											"        \"email\": pm.collectionVariables.get(\"incorrectEmailFormat\"),\r",
+											"        \"password\": pm.variables.replaceIn(\"{{$passwordMin}}\")\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"// row radio button in request Body tab must be selected.\r",
+											"pm.request.body.raw = addRequestBody();\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with password below min",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for incorrect password\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_icorrectPassword\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"packages": {},
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordBelowMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with password letters only",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for incorrect password\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_icorrectPassword\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with password numbers only",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 500ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate error message for incorrect password\", function () {\r",
+											"    const response = pm.response.json();\r",
+											"    const errorMessage = pm.collectionVariables.get(\"userCreated_error_icorrectPassword\");\r",
+											"\r",
+											"    pm.expect(response.message,\"User error message\").to.eql(errorMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordMin}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Leo\",\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has success message\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Login successful\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains user object with expected fields\", function () {\r",
+									"    const user = pm.response.json().user;\r",
+									"    pm.expect(user).to.have.property(\"id\");\r",
+									"    pm.expect(user).to.have.property(\"username\");\r",
+									"    pm.expect(user).to.have.property(\"email\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT user details",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Leo\",\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Leo\",\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE user",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"userId\", pm.response.json().user.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Leo\",\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains success message\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.match(/User id \\d+ deleted/);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/{{userId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/users/{{userId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blank page",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/v1/hello",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v1",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3011",
+			"type": "string"
+		},
+		{
+			"key": "incorrectEmailFormat",
+			"value": "demo#demo.com",
+			"type": "string"
+		},
+		{
+			"key": "passwordMin",
+			"value": "abcd1234",
+			"type": "string"
+		},
+		{
+			"key": "passwordBelowMin",
+			"value": "a1b2c3d",
+			"type": "string"
+		},
+		{
+			"key": "usernameMin",
+			"value": "Den",
+			"type": "string"
+		},
+		{
+			"key": "usernameMax",
+			"value": "MarkoMarkoMarkoMarkoMarkoMarkoMarko",
+			"type": "string"
+		},
+		{
+			"key": "usernameBelowMin",
+			"value": "Li",
+			"type": "string"
+		},
+		{
+			"key": "usernameAboveMax",
+			"value": "MarkoMarkoMarkoMarkoMarkoMarkoMarkoZ",
+			"type": "string"
+		},
+		{
+			"key": "userId_for_get",
+			"value": ""
+		},
+		{
+			"key": "user_for_get",
+			"value": ""
+		},
+		{
+			"key": "userId_for_post",
+			"value": ""
+		},
+		{
+			"key": "user_for_post",
+			"value": ""
+		},
+		{
+			"key": "user_for_post_nameLengthMin",
+			"value": ""
+		},
+		{
+			"key": "userId_for_post_nameLengthMin",
+			"value": ""
+		},
+		{
+			"key": "user_for_post_nameLengthMax",
+			"value": ""
+		},
+		{
+			"key": "userId_for_post_nameLengthMax",
+			"value": ""
+		},
+		{
+			"key": "userCreatedMessage",
+			"value": "User created successfully",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_requiredFields",
+			"value": "username, email, password fields are mandatory.",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_icorrectPassword",
+			"value": "Invalid password",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_userNameUnique",
+			"value": "Username already exist",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_userNameLength",
+			"value": "Username length min 3 and max 35",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_emailUnique",
+			"value": "Email already exist",
+			"type": "string"
+		},
+		{
+			"key": "userCreated_error_emailFormat",
+			"value": "Invalid email format",
+			"type": "string"
+		}
+	]
+}
