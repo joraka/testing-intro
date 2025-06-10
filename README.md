@@ -138,6 +138,8 @@ end - 7/21/20205
 3. Intro to SQL
 4. SQL scripts
 
-
+### [Lecture 25](/notes/lecture_25.md)
+1. Repeat and check homework
+2. SQL scripts
 
 <!-- ## Week 09 -->
