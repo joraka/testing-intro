@@ -35,7 +35,6 @@
 
 -- 12.Parašykite SQL užklausą, kuri ištrauktų visus filmus, kurių žanro aprašymas prasideda žodžiu 
 -- “Trailers”. Naudokite lentelę „film“. 
-
 -- pirmas elementas yra 'Trailers'
 
 

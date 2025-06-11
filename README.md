@@ -142,4 +142,8 @@ end - 7/21/20205
 1. Repeat and check homework
 2. SQL scripts
 
+### [Lecture 26](/notes/lecture_26.md)
+1. Repeat and check homework
+2. SQL scripts
+
 <!-- ## Week 09 -->
