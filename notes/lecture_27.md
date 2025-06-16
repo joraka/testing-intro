@@ -21,7 +21,7 @@ DROP TABLE:
     https://www.postgresql.org/docs/current/sql-droptable.html  
 
 #### MODIFY DATA
-INSERT:  0
+INSERT:  
     https://neon.com/postgresql/postgresql-tutorial/postgresql-insert
     https://www.postgresql.org/docs/current/sql-insert.html  
 
