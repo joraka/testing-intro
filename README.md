@@ -146,4 +146,20 @@ end - 7/21/20205
 1. Repeat and check homework
 2. SQL scripts
 
-<!-- ## Week 09 -->
+### [Lecture 27](/notes/lecture_27.md)
+1. Repeat and check homework
+2. SQL scripts
+
+
+## Week 09
+### [Lecture 27](/notes/lecture_27.md)
+1. Repeat and check homework
+2. Intro to security
+3. JWT
+4. API key vs. JWT
+5. Attacks
+
+
+
+<!-- ## Week 10 -->
+
