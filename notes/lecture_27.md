@@ -7,9 +7,33 @@
 
 ## 2. SQL scripts 
 
-https://www.postgresql.org/docs/current/datatype.html  
+Data types:  
 https://www.postgresql.org/docs/current/datatype-numeric.html  
-https://neon.com/postgresql/postgresql-tutorial/postgresql-data-types  
+https://www.postgresql.org/docs/current/datatype.html  
+https://neon.tech/postgresql/postgresql-tutorial/postgresql-data-types  
+
+#### MODIFY TABLE
+ALTER TABLE:  
+    https://www.postgresql.org/docs/8.0/sql-altertable.html  
+    https://neon.tech/postgresql/postgresql-tutorial/postgresql-alter-table  
+
+DROP TABLE:  
+    https://www.postgresql.org/docs/current/sql-droptable.html  
+
+#### MODIFY DATA
+INSERT:  0
+    https://neon.com/postgresql/postgresql-tutorial/postgresql-insert
+    https://www.postgresql.org/docs/current/sql-insert.html  
+
+UPDATE:  
+    https://www.postgresql.org/docs/current/sql-update.html  
+    https://neon.com/postgresql/postgresql-tutorial/postgresql-update  
+
+DELETE:  
+    https://www.postgresql.org/docs/8.1/sql-delete.html  
+    https://neon.tech/postgresql/postgresql-tutorial/postgresql-default-value  
+
+### sql code examples
 
 Solution copy table data between different databases would be to use CSV files
 ```SQL
@@ -38,4 +62,6 @@ CREATE TABLE my_film (
 -- run from demo_db data base
 COPY my_film FROM 'C:\00_bt\bt-js-testing-20250129\projects\09_sql_scripts\film.csv' WITH CSV HEADER;
 ```
+
+
 
