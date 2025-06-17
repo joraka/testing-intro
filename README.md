@@ -152,13 +152,15 @@ end - 7/21/20205
 
 
 ## Week 09
-### [Lecture 27](/notes/lecture_27.md)
+### [Lecture 28](/notes/lecture_28.md)
 1. Repeat and check homework
 2. Intro to security
 3. JWT
 4. API key vs. JWT
 5. Attacks
 
+### [Lecture 29](/notes/lecture_29.md)
+1. Coding Postgres, JWT, env
 
 
 <!-- ## Week 10 -->
