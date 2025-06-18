@@ -1,4 +1,7 @@
 const express = require("express");
+const envr = require("./config/env.js");
+const pool = require("./config/db");
+const initialize_db = require("./utils/dbinit");
 
 const port = 3011;
 const app = express();
@@ -8,7 +11,19 @@ app.use(express.json());
 
 const db = { max_id: 0, users: [] };
 
-const sayHello = (req, res) => res.status(200).send("Hello world!");
+const sayHello = (req, res) => {
+    // res.status(200).send("Hello world!")
+    res.status(200).json({
+        "DB_USER": envr.DB_USER,
+        "DB_HOST": envr.DB_HOST,
+        "DB_PASSWORD": envr.DB_PASSWORD,
+        "DB_NAME": envr.DB_NAME,
+        "DB_PORT": envr.DB_PORT,
+        "JWT_SECRET": process.env.JWT_SECRET
+    });
+};
+
+// http://localhost:3011/v1/hello
 app.get("/v1/hello", sayHello);
 
 const findUserByUsername = (username) => db.users.find(it => it.username === username);
@@ -17,8 +32,10 @@ const validateUsernameLength = (username) => username.length < 3 || username.len
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const validatePassword = (password) => password.length >= 8 && password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]+$/);
 
+initialize_db();
+
 // http://localhost:3011/v1/users
-app.post("/v1/users", (req, res) => {
+app.post("/v1/users", async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
@@ -27,16 +44,15 @@ app.post("/v1/users", (req, res) => {
         }
 
         const user = {
-            id: db.max_id + 1,
             username: username.trim(),
             email,
             password
         };
 
         // username validation: unique
-        if (findUserByUsername(user.username)) {
-            return res.status(409).json({ message: "Username already exist" });
-        };
+        // if (findUserByUsername(user.username)) {
+        //     return res.status(409).json({ message: "Username already exist" });
+        // };
 
         // username validation: min 3, max 35
         if (validateUsernameLength(user.username)) {
@@ -44,9 +60,9 @@ app.post("/v1/users", (req, res) => {
         }
 
         // email validation: unique
-        if (findUserByEmail(user.email)) {
-            return res.status(409).json({ message: "Email already exist" });
-        }
+        // if (findUserByEmail(user.email)) {
+        //     return res.status(409).json({ message: "Email already exist" });
+        // }
 
         // email validation: keep email format
         // if (!user.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -59,8 +75,18 @@ app.post("/v1/users", (req, res) => {
             return res.status(400).json({ message: "Invalid password" });
         }
 
-        db.max_id = user.id;
-        db.users.push(user);
+        // require to hash password
+
+        const result = await pool.query(
+            `
+            INSERT INTO users(user_name, email, password)
+            VALUES ($1, $2, $3)
+            RETURNING *;
+            `,
+            [user.username, user.email, user.password]
+        );
+
+        // result();
 
         res.status(201).json({
             message: "User created successfully",
