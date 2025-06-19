@@ -165,5 +165,8 @@ end - 7/21/20205
 ### [Lecture 30](/notes/lecture_30.md)
 1. Coding Postgres, JWT, env
 
+### [Lecture 31](/notes/lecture_31.md)
+1. Coding Postgres, JWT, env
+
 <!-- ## Week 10 -->
 
