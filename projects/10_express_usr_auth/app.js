@@ -2,6 +2,7 @@ const express = require("express");
 const envr = require("./config/env.js");
 const pool = require("./config/db");
 const initialize_db = require("./utils/dbinit");
+const { hashPassword, comparePassword } = require("./utils/hash");
 
 const port = 3011;
 const app = express();
@@ -31,6 +32,11 @@ const findUserByEmail = (email) => db.users.find(it => it.email === email);
 const validateUsernameLength = (username) => username.length < 3 || username.length > 35;
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const validatePassword = (password) => password.length >= 8 && password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]+$/);
+const setUpError = (message, code) =>{
+    const error = new Error(message);
+    error.statusCode = code
+    return error
+}
 
 initialize_db();
 
@@ -76,6 +82,7 @@ app.post("/v1/users", async (req, res) => {
         }
 
         // require to hash password
+        const hashedPassword = await hashPassword(user.password);
 
         const result = await pool.query(
             `
@@ -83,18 +90,65 @@ app.post("/v1/users", async (req, res) => {
             VALUES ($1, $2, $3)
             RETURNING *;
             `,
-            [user.username, user.email, user.password]
+            [user.username, user.email, hashedPassword]
         );
-
-        // result();
 
         res.status(201).json({
             message: "User created successfully",
-            user
+            user: {
+                id: result.rows[0].user_id,
+                name: result.rows[0].user_name,
+                email: result.rows[0].email,
+                created_at: result.rows[0].created_at,
+                updated_at: result.rows[0].updated_at
+            }
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
+});
+
+app.post("/v1/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const result = await pool.query(
+            `
+        SELECT user_id, user_name, password 
+        FROM users
+        WHERE user_name = $1
+        `,
+            [username]
+        );
+
+        const user = result.rows[0];
+
+        if (result.rows.length === 0 || !user.password) {
+            const error = new Error("User not found");
+            error.statusCode = 404;
+            throw error
+        }
+
+        const isCorrectPassword = await comparePassword(password, user.password)
+
+        if(!isCorrectPassword){
+            throw setUpError("Invalid user name or password", 404);
+        }
+
+        res.status(200).json({
+            message: "Successful login",
+            id: user.user_id,
+            username: user.user_name,
+            token: "??????????"
+        });
+
+    } catch (error) {
+        res.status(error.statusCode || 500).json({
+            error: error.message || "Internal server error"
+        });
+    }
+
+
 });
 
 app.get("/v1/users", (req, res) => {

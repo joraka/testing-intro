@@ -1,0 +1,8 @@
+Complete some code parts of project express_usr_auth and write mandatory API tests with Postman.
+
+Require code in app.js file:
+
+* validation in "create new user" functionality: check database if user name or email exist
+* validation of Login functionality: check if request body has username and password.
+* authorization of "get all users" functionality: example is "get user details"
+* "delete user" functionality: authorization in order to delete current account, example "get user details" 
