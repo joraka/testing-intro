@@ -168,5 +168,13 @@ end - 7/21/20205
 ### [Lecture 31](/notes/lecture_31.md)
 1. Coding Postgres, JWT, env
 
+
 <!-- ## Week 10 -->
+### [Lecture 32](/notes/lecture_32.md)
+1. Repeat and check homework
+2. Testing framework Jest and Supertest
+
+
+
+<!-- ## Week 11 -->
 
