@@ -1,3 +1,6 @@
+*.code-workspace
+*.bat
+
 # mac
 .DS_Store
 
