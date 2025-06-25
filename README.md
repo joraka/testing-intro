@@ -174,7 +174,9 @@ end - 7/21/20205
 1. Repeat and check homework
 2. Testing framework Jest and Supertest
 
-
+### [Lecture 33](/notes/lecture_32.md)
+1. Repeat and check homework
+2. Integration testing
 
 <!-- ## Week 11 -->
 
