@@ -174,9 +174,15 @@ end - 7/21/20205
 1. Repeat and check homework
 2. Testing framework Jest and Supertest
 
-### [Lecture 33](/notes/lecture_32.md)
+### [Lecture 33](/notes/lecture_33.md)
 1. Repeat and check homework
 2. Integration testing
+
+### [Lecture 34](/notes/lecture_34.md)
+1. Repeat and check homework
+2. Automation testing
+3. Cypress install
+4. First test with cypress
 
 <!-- ## Week 11 -->
 
