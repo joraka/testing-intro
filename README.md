@@ -185,4 +185,18 @@ end - 7/21/20205
 4. First test with cypress
 
 <!-- ## Week 11 -->
+### [Lecture 35](/notes/lecture_35.md)
+1. Repeat and check homework
+2. E2E tests vs integration tests.
+3. Get vs contains in cypress.
+4. Actions in cypress: type and click.
+
+
+<!-- ### [Lecture 36](/notes/lecture_36.md)
+1. Repeat and check homework
+2. demo.html
+3. Combinator and xpath selectors -->
+
+
+<!-- ## Week 12 -->
 
