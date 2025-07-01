@@ -191,11 +191,12 @@ end - 7/21/20205
 3. Get vs contains in cypress.
 4. Actions in cypress: type and click.
 
-
-<!-- ### [Lecture 36](/notes/lecture_36.md)
+### [Lecture 36](/notes/lecture_36.md)
 1. Repeat and check homework
 2. demo.html
-3. Combinator and xpath selectors -->
+3. Combinator 
+4. xpath selectors
+5. Readme
 
 
 <!-- ## Week 12 -->
