@@ -198,6 +198,16 @@ end - 7/21/20205
 4. xpath selectors
 5. Readme
 
+### [Lecture 37](/notes/lecture_37.md)
+1. Repeat and check homework
+2. Structuring with describe()
+3. Readme
+4. Intro to CI/CD
+5. Virtual machines
+6. Cypress run
+7. cypress.config.js 
+8. Cypress commands
+
 
 <!-- ## Week 12 -->
 

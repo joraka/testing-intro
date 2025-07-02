@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "e2e:headless": "cypress run",
+    "e2e:chrome": "cypress run --browser chrome",
+    "e2e:spec_fl": "cypress run --browser chrome --spec 'cypress/e2e/spec.cy.js'",
+    "e2e:hw": "cypress run --browser chrome --spec 'cypress/e2e/spec02.cy.js'"
   },
   "keywords": [],
   "author": "",
