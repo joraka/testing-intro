@@ -1,0 +1,7 @@
+In this homework you will practice to test a tic-tac-toe game with React.
+
+PARTIALLY DONE - 1. Create a new git repo for this project and push into GitHub.
+DONE - 2. Setup a Vite React project in it.
+DONE - 3. Add a tic-tac-toe application code generated during lessons:
+4. Write Cypress positive-negative tests.
+5. Run tests with GitHub Actions

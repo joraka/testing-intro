@@ -208,6 +208,12 @@ end - 7/21/20205
 7. cypress.config.js 
 8. Cypress commands
 
+### [Lecture 38](/notes/lecture_38.md)
+1. Repeat and check homework
+2. Single page apps (spa). Website vs web applications.
+3. React
+4. Scripts
+5. Github actions pipelines
 
 <!-- ## Week 12 -->
 
